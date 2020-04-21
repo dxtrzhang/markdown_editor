@@ -21,6 +21,7 @@ cnpm install
 
 // start project
 cnpm start
+cnpm run electron
 ```  
 
 # Features(WIP)
