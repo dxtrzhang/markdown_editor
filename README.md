@@ -41,3 +41,9 @@ cnpm run electron
 3. Share support(provide a simple server to host generated html file or raw markdown, maybe a docker image)
 4. Edit history support
 5. A better way to write tables(tables in markdown is so annoying, no ideas yet...)
+
+# Reference 
+1. [markdown-js](https://github.com/evilstreak/markdown-js/blob/master/src/render_tree.js)
+high star origin js project
+2. [MDE](https://github.com/vincentdchan/MDE/blob/master/src/controller/lineRenderer.ts)
+ts project based on electron with international switch
