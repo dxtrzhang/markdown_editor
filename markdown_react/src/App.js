@@ -1,28 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
+import ChatApp from './examples/ChatApp.js';
+import TimerUseHOF from './examples/TimerUseHOF.js';
 import './App.css';
-import {Button} from 'antd';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button type="link">submit</Button>
-      </header>
-    </div>
-  );
+const routeMap = {
+  chat: ChatApp,
+  timerUseHOF: TimerUseHOF,
+};
+
+const styles = {
+  fontFamily: 'sans-serif',
+  paddingLeft: '250px',
+};
+
+class App extends React.PureComponent {
+  handleLinkClick = (key) => {
+    window.history.pushState(null, '', `/#/${key}`);
+    this.forceUpdate();
+  };
+  render() {
+    const currentPage = document.location.hash.replace(/#\/?/, '');
+
+    let CurrentPage = routeMap[currentPage] || <div>Hello</div>;
+    return (
+      <div style={styles}>
+        <ul className="menu-list">
+          {Object.keys(routeMap).map((key) => (
+            <li
+              key={key}
+              className={key === currentPage ? 'is-active' : ''}
+              style={{ listStyle: 'none' }}
+            >
+              <span className="link" onClick={() => this.handleLinkClick(key)}>
+                {key}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <div style={{ padding: '30px 0' }}>
+          <CurrentPage />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
