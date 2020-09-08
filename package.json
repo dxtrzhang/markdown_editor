@@ -1,9 +1,16 @@
 {
-  "main": "main.js",
+  "main": "main.ts",
   "scripts": {
-    "start": "electron ."
+    "build": "tsc",
+    "start": "yarn run build && electron ./dist/main.js"
   },
   "devDependencies": {
-    "electron": "^8.2.3"
+    "electron": "^9.0.4",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "@types/marked": "^1.1.0",
+    "marked": "^1.1.1"
   }
 }
